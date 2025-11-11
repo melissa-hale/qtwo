@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 Partner Personalization Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Cover */
+        .cover {
+            text-align: center;
+            padding: 80px 0 100px 0;
+            border-bottom: 3px solid #8B7AB8;
+            margin-bottom: 60px;
+        }
+        
+        .cover h1 {
+            font-size: 42px;
+            font-weight: 300;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 50%, #00A896 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .cover .subtitle {
+            font-size: 20px;
+            color: #4A90C8;
+            font-weight: 400;
+        }
+        
+        /* Section Headers */
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin: 60px 0 25px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E8EAED;
+        }
+        
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4A90C8;
+            margin: 35px 0 15px 0;
+        }
+        
+        /* Body Text */
+        p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 18px;
+        }
+        
+        p strong {
+            color: #8B7AB8;
+            font-weight: 600;
+        }
+        
+        /* Lists */
+        ul {
+            margin: 20px 0 20px 25px;
+        }
+        
+        ul li {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        /* Callout Boxes */
+        .callout {
+            background: linear-gradient(135deg, rgba(139, 122, 184, 0.08) 0%, rgba(74, 144, 200, 0.08) 50%, rgba(0, 168, 150, 0.08) 100%);
+            border-left: 4px solid #8B7AB8;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .callout p {
+            margin: 0;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        .callout strong {
+            color: #8B7AB8;
+        }
+        
+        /* Pattern Cards */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .pattern-card {
+            background: #F8F9FA;
+            border: 2px solid #E8EAED;
+            border-radius: 8px;
+            padding: 25px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .pattern-card:hover {
+            border-color: #4A90C8;
+        }
+        
+        .pattern-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 100%);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .pattern-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin-bottom: 10px;
+        }
+        
+        .pattern-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .pattern-examples {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+        }
+        
+        /* Journey Timeline */
+        .journey-timeline {
+            position: relative;
+            padding: 40px 0 40px 80px;
+            margin: 40px 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 39px;
+            top: 60px;
+            bottom: 60px;
+            width: 3px;
+            background: linear-gradient(180deg, #8B7AB8 0%, #4A90C8 50%, #00A896 100%);
+        }
+        
+        .timeline-step {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+        
+        .timeline-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-marker {
+            position: absolute;
+            left: -61px;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #8B7AB8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            color: #8B7AB8;
+            z-index: 2;
+        }
+        
+        .step-marker.step-2 { border-color: #4A90C8; color: #4A90C8; }
+        .step-marker.step-3 { border-color: #4A90C8; color: #4A90C8; }
+        .step-marker.step-4 { border-color: #00A896; color: #00A896; }
+        .step-marker.step-5 { border-color: #00A896; color: #00A896; }
+        .step-marker.step-6 { border-color: #00A896; color: #00A896; }
+        
+        .step-actor {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .step-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin-bottom: 8px;
+        }
+        
+        .step-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .step-detail {
+            background: #F8F9FA;
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* Framework Boxes */
+        .framework-flow {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .framework-box {
+            flex: 1;
+            background: #F8F9FA;
+            border: 2px solid #E8EAED;
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+        }
+        
+        .framework-box.highlighted {
+            background: linear-gradient(135deg, rgba(139, 122, 184, 0.05) 0%, rgba(74, 144, 200, 0.05) 100%);
+            border-color: #4A90C8;
+        }
+        
+        .box-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 100%);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        
+        .box-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin-bottom: 12px;
+        }
+        
+        .box-description {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .box-examples {
+            background: white;
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .box-examples strong {
+            color: #8B7AB8;
+            font-weight: 600;
+        }
+        
+        .box-examples ul {
+            margin: 8px 0 0 15px;
+            list-style: disc;
+        }
+        
+        .box-examples li {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        
+        /* Steps List */
+        .steps-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .step-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #F8F9FA;
+            border-radius: 6px;
+            border-left: 4px solid #4A90C8;
+        }
+        
+        .step-item-number {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin-bottom: 6px;
+        }
+        
+        .step-content-description {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Code Blocks */
+        .code-block {
+            background: #2D3748;
+            color: #00A896;
+            padding: 18px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .code-inline {
+            font-family: 'Courier New', monospace;
+            background: #F8F9FA;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: #8B7AB8;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table th {
+            background: linear-gradient(135deg, rgba(139, 122, 184, 0.1) 0%, rgba(74, 144, 200, 0.1) 100%);
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 600;
+            color: #8B7AB8;
+            border-bottom: 2px solid #E8EAED;
+        }
+        
+        table td {
+            padding: 12px;
+            font-size: 13px;
+            color: #666;
+            border-bottom: 1px solid #E8EAED;
+        }
+        
+        table code {
+            font-family: 'Courier New', monospace;
+            background: #F8F9FA;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #8B7AB8;
+        }
+        
+        /* Endpoint Boxes */
+        .endpoint-box {
+            background: #F8F9FA;
+            border: 2px solid #E8EAED;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .endpoint-method {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 100%);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #8B7AB8;
+        }
+        
+        .endpoint-description {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .document {
+                max-width: 100%;
+                padding: 40px;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+            
+            .pattern-card, .framework-box, .step-item, .timeline-step {
+                page-break-inside: avoid;
+            }
+            
+            .cover h1 {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .document {
+                padding: 40px 20px;
+            }
+            
+            .pattern-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .framework-flow {
+                flex-direction: column;
+            }
+            
+            .journey-timeline {
+                padding-left: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- Cover -->
+        <div class="cover">
+            <h1>Partner Personalization Framework</h1>
+            <p class="subtitle">A Strategic Overview for Partner Collaboration</p>
+        </div>
+        
+        <!-- Overview -->
+        <h2>Overview</h2>
+        <p>Q2's Personalization Data Layer creates a secure, permissioned environment where partner engagement signals flow into FI marketing and personalization tools. This shared data layer enables financial institutions to deliver contextual experiences—personalized dashboards, targeted campaigns, and timely alerts—that drive partner adoption and user engagement.</p>
+        
+        <p>When partners share lifecycle and behavioral data, they strengthen the FI's ability to market and support their products. As users engage with these experiences, those interactions feed new signals back into the system, creating a continuous cycle of shared growth.</p>
+        
+        <div class="callout">
+            <p><strong>The key value:</strong> Partner signals flow into FI tools like Q2 SMART, Q2 Discover, and Larky—enabling FIs to proactively drive outcomes through push notifications, in-app modals, and targeted campaigns that reach users outside the partner's content block.</p>
+        </div>
+        
+        <div class="callout">
+            <p><strong>Early results:</strong> Coordinated FI-partner campaigns leveraging shared data have shown significant improvements in activation rates and reduced time-to-first-value compared to partners operating in isolation.</p>
+        </div>
+        
+        <!-- Design Partner Opportunity -->
+        <h2>Design Partner Opportunity</h2>
+        <p>Q2 is actively developing the Personalization Data Layer with a select group of design partners. This document represents the target state architecture and capabilities—the vision we're building together.</p>
+        
+        <p>Partners who engage now will help shape the API design, trait schemas, and integration patterns, ensuring the platform meets real-world needs from day one.</p>
+        
+        <h3>Benefits of Early Engagement</h3>
+        <div class="pattern-grid">
+            <div class="pattern-card">
+                <div class="pattern-number">1</div>
+                <div class="pattern-title">Influence Platform Design</div>
+                <div class="pattern-description">
+                    Provide input on API endpoints, trait naming conventions, audience definition patterns, and integration workflows before they're finalized.
+                </div>
+            </div>
+            
+            <div class="pattern-card">
+                <div class="pattern-number">2</div>
+                <div class="pattern-title">Collaborative Schema Development</div>
+                <div class="pattern-description">
+                    Work directly with Q2 product and engineering teams to define your trait schema and audience logic—ensuring it drives the outcomes you care about.
+                </div>
+            </div>
+            
+            <div class="pattern-card">
+                <div class="pattern-number">3</div>
+                <div class="pattern-title">Early Access</div>
+                <div class="pattern-description">
+                    Get priority access to capabilities as they launch, including pilot integrations with select FIs to prove value and gather performance data.
+                </div>
+            </div>
+            
+            <div class="pattern-card">
+                <div class="pattern-number">4</div>
+                <div class="pattern-title">Competitive Advantage</div>
+                <div class="pattern-description">
+                    Establish FI marketing integration as a differentiator before the broader partner ecosystem has access, accelerating adoption across your FI base.
+                </div>
+            </div>
+        </div>
+        
+        <div class="callout">
+            <p><strong>Interested in becoming a design partner?</strong> Contact partnerships@q2.com to discuss how we can work together to build the future of partner-FI collaboration.</p>
+        </div>
+        
+        <!-- How It Works + Use Case Patterns -->
+        <h2>How It Works</h2>
+        <p>The Personalization Data Layer operates through three simple steps:</p>
+        
+        <h3>1. Partners Write Traits and Audiences</h3>
+        <p>Partners contribute data in two ways:</p>
+        <ul>
+            <li><strong>Traits:</strong> Individual data points about users (lifecycle events, behavioral signals, risk indicators). Signals can be sent during logged-in sessions via SDK, through direct API calls, or asynchronously via webhooks when events occur outside user sessions.</li>
+            <li><strong>Audiences:</strong> Partners can also define dynamic audience segments based on their trait logic, creating pre-built targeting groups that FIs can immediately use.</li>
+        </ul>
+        <p><strong>Examples:</strong> user_enrolled, funding_status, days_since_last_login, fraud_detected</p>
+        
+        <h3>2. FIs Create Campaigns</h3>
+        <p>Using Q2 SMART or connected marketing tools, FIs build campaigns using partner-defined audiences or create custom segments by querying traits. Partner-defined audiences sync automatically to delivery channels like Larky.</p>
+        
+        <h3>3. Experiences Are Delivered</h3>
+        <p>Personalized content reaches users across multiple channels—all responding to the user's current state:</p>
+        <ul>
+            <li><strong>Push notifications</strong> via Larky</li>
+            <li><strong>In-app modals</strong> via Q2 Discover</li>
+            <li><strong>Email campaigns</strong> via FI marketing tools</li>
+            <li><strong>Partner UX</strong> via audience membership reads</li>
+        </ul>
+        
+        <h3>Use Case Patterns</h3>
+        <p>These capabilities enable four foundational patterns that apply across industries:</p>
+        
+        <div class="pattern-grid">
+            <div class="pattern-card">
+                <div class="pattern-number">1</div>
+                <div class="pattern-title">Enrollment & Onboarding</div>
+                <div class="pattern-description">
+                    Guide users from signup through initial setup. FIs welcome new users, explain features, and celebrate onboarding milestones.
+                </div>
+                <div class="pattern-examples">
+                    Example traits: user_enrolled, onboarding_step_completed
+                </div>
+            </div>
+            
+            <div class="pattern-card">
+                <div class="pattern-number">2</div>
+                <div class="pattern-title">Activation & Recovery</div>
+                <div class="pattern-description">
+                    Nudge users who haven't completed critical actions—funding accounts, linking externals, or taking first steps. Re-engage dormant users before they churn.
+                </div>
+                <div class="pattern-examples">
+                    Example traits: funding_status, days_since_last_login, activation_complete
+                </div>
+            </div>
+            
+            <div class="pattern-card">
+                <div class="pattern-number">3</div>
+                <div class="pattern-title">Milestone & Progression</div>
+                <div class="pattern-description">
+                    Recognize achievements and surface next best actions. Celebrate first transactions, goal completions, or account anniversaries to maintain momentum.
+                </div>
+                <div class="pattern-examples">
+                    Example traits: milestone_reached, goal_progress_percent, engagement_level
+                </div>
+            </div>
+            
+            <div class="pattern-card">
+                <div class="pattern-number">4</div>
+                <div class="pattern-title">Feature Launch & Adoption</div>
+                <div class="pattern-description">
+                    Introduce new capabilities to the right users at the right time. Target early adopters, drive exploration, and measure feature uptake.
+                </div>
+                <div class="pattern-examples">
+                    Example traits: feature_enabled, feature_first_use, beta_participant
+                </div>
+            </div>
+        </div>
+        
+        <!-- Full Journey Example -->
+        <h2>Complete Journey: Activation Campaign</h2>
+        <p>Here's how the complete system works in practice, using a partner activation campaign via Larky as an example. The same pattern works with Q2 Discover or FI marketing tools.</p>
+        
+        <div class="journey-timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-step">
+                <div class="step-marker step-1">1</div>
+                <div class="step-actor">Partner</div>
+                <div class="step-title">Partner Contributes Data</div>
+                <div class="step-description">
+                    Partner writes traits when user enrolls and defines a dynamic audience for users who need activation.
+                </div>
+                <div class="step-detail">
+                    Trait: partner_enrolled=true, funding_status=none<br>
+                    Audience: "Enrolled but Not Funded"
+                </div>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="step-marker step-2">2</div>
+                <div class="step-actor">Q2 Platform</div>
+                <div class="step-title">Audience Syncs to Larky</div>
+                <div class="step-description">
+                    Partner-defined audience automatically syncs to Larky's targeting system. User enters the "Enrolled but Not Funded" segment.
+                </div>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="step-marker step-3">3</div>
+                <div class="step-actor">FI / Larky</div>
+                <div class="step-title">FI Launches Campaign</div>
+                <div class="step-description">
+                    FI creates activation campaign in Larky targeting the partner's audience. Push notification sent: "Complete your account setup."
+                </div>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="step-marker step-4">4</div>
+                <div class="step-actor">User</div>
+                <div class="step-title">User Engages and Activates</div>
+                <div class="step-description">
+                    User receives push, taps through to partner app, and completes funding. The activation they've been nudged toward is now complete.
+                </div>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="step-marker step-5">5</div>
+                <div class="step-actor">Partner</div>
+                <div class="step-title">Partner Updates Traits</div>
+                <div class="step-description">
+                    Partner detects funding completion (via webhook or scheduled job) and updates user's trait via API.
+                </div>
+                <div class="step-detail">
+                    Trait update: funding_status=settled
+                </div>
+            </div>
+            
+            <div class="timeline-step">
+                <div class="step-marker step-6">6</div>
+                <div class="step-actor">Q2 Platform</div>
+                <div class="step-title">User Exits Audience</div>
+                <div class="step-description">
+                    User automatically exits "Enrolled but Not Funded" audience and enters "Funded but Not Invested" audience. New campaigns can now target this next stage.
+                </div>
+            </div>
+        </div>
+        
+        <div class="callout">
+            <p><strong>The continuous cycle:</strong> Each milestone updates traits → Audiences refresh automatically → FIs deliver contextual experiences → Partners see higher engagement and share more signals.</p>
+        </div>
+        
+        <!-- What's Next (merged with Working Backwards) -->
+        <h2>What's Next: Partnering with Q2</h2>
+        <p>Q2 will partner with you through the entire process—from defining your trait schema to launching campaigns and measuring results. Here's how we'll work together:</p>
+        
+        <ol class="steps-list">
+            <li class="step-item">
+                <div class="step-item-number">1</div>
+                <div class="step-content">
+                    <div class="step-content-title">Identify the outcomes you want to drive</div>
+                    <div class="step-content-description">
+                        What user behavior do you want to improve? Start with one high-impact use case. Work backwards from that outcome to determine which signals FIs need.
+                    </div>
+                </div>
+            </li>
+            
+            <li class="step-item">
+                <div class="step-item-number">2</div>
+                <div class="step-content">
+                    <div class="step-content-title">Define your trait schema, audiences, and user identity mapping</div>
+                    <div class="step-content-description">
+                        Q2 will collaborate with you to refine your trait definitions, identify which audiences to create, and establish how to map your user identifiers to Q2 User IDs. We'll ensure your schema is optimized for FI campaign targeting.
+                    </div>
+                </div>
+            </li>
+            
+            <li class="step-item">
+                <div class="step-item-number">3</div>
+                <div class="step-content">
+                    <div class="step-content-title">Define success metrics</div>
+                    <div class="step-content-description">
+                        Establish key metrics to measure campaign effectiveness—conversions per day, activation rates, time-to-first-value, or engagement lift. Partners will track these metrics and share results with Q2 to inform optimization.
+                    </div>
+                </div>
+            </li>
+            
+            <li class="step-item">
+                <div class="step-item-number">4</div>
+                <div class="step-content">
+                    <div class="step-content-title">Integrate via SDK or API</div>
+                    <div class="step-content-description">
+                        Implement trait writes and audience definitions in your application. Q2 provides documentation, code examples, and technical support throughout integration.
+                    </div>
+                </div>
+            </li>
+            
+            <li class="step-item">
+                <div class="step-item-number">5</div>
+                <div class="step-content">
+                    <div class="step-content-title">Launch pilot and measure results</div>
+                    <div class="step-content-description">
+                        Test the data flow and campaign effectiveness with one financial institution. Q2 and the partner will jointly monitor performance against defined metrics.
+                    </div>
+                </div>
+            </li>
+            
+            <li class="step-item">
+                <div class="step-item-number">6</div>
+                <div class="step-content">
+                    <div class="step-content-title">Scale and iterate</div>
+                    <div class="step-content-description">
+                        Once proven, activate the capability across all participating FIs. Continue refining traits, audiences, and campaigns based on performance data.
+                    </div>
+                </div>
+            </li>
+        </ol>
+        
+        <h3>Working Backwards Framework</h3>
+        <p>The most effective trait schemas start with outcomes, not data. Rather than asking "what data do I have?", ask: <strong>"What do I wish FIs knew about my users so they could drive better outcomes?"</strong></p>
+        
+        <div class="framework-flow">
+            <div class="framework-box">
+                <div class="box-number">1</div>
+                <div class="box-title">Start with the Outcome</div>
+                <div class="box-description">
+                    What user behavior are you trying to drive?
+                </div>
+                <div class="box-examples">
+                    <strong>Examples:</strong>
+                    <ul>
+                        <li>Increase activation rates</li>
+                        <li>Reduce time-to-first-value</li>
+                        <li>Prevent churn</li>
+                        <li>Drive feature adoption</li>
+                        <li>Protect users from fraud</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="framework-box highlighted">
+                <div class="box-number">2</div>
+                <div class="box-title">Define the Traits</div>
+                <div class="box-description">
+                    What signals would help FIs achieve that outcome?
+                </div>
+                <div class="box-examples">
+                    <strong>Examples:</strong>
+                    <ul>
+                        <li>Lifecycle states (enrolled, funded, activated)</li>
+                        <li>Behavioral indicators (days_since_login, completion_rate)</li>
+                        <li>Eligibility flags (feature_enabled, beta_access)</li>
+                        <li>Risk signals (fraud_detected, unusual_activity)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="framework-box">
+                <div class="box-number">3</div>
+                <div class="box-title">Enable FI Action</div>
+                <div class="box-description">
+                    How can FIs use these traits to drive the outcome?
+                </div>
+                <div class="box-examples">
+                    <strong>Examples:</strong>
+                    <ul>
+                        <li>Target "enrolled but not funded" → Activation campaign</li>
+                        <li>Detect "dormant user" → Re-engagement</li>
+                        <li>Identify "milestone reached" → Celebrate + next step</li>
+                        <li>Flag "fraud detected" → Alert immediately</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="callout">
+            <p><strong>Questions? Ready to get started?</strong><br>
+            Contact: partnerships@q2.com</p>
+        </div>
+        
+        <!-- Technical Addendum -->
+        <h2 style="margin-top: 80px; padding-top: 40px; border-top: 3px solid #8B7AB8;">Technical Addendum</h2>
+        <p style="color: #999; font-size: 14px; font-style: italic;">API Reference & Integration Guide</p>
+        
+        <h3>Core Operations</h3>
+        <p>Partners interact with Q2's Personalization Data Layer through three primary operations: writing traits, defining audiences, and reading audience membership.</p>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">Write Traits</h4>
+        <div class="endpoint-box">
+            <div>
+                <span class="endpoint-method">POST</span>
+                <span class="endpoint-url">/trait_store/traits/users/{userId}/batch</span>
+            </div>
+            <p class="endpoint-description">
+                Set multiple trait values for a single user. Accepts a JSON payload with trait key-value pairs.
+            </p>
+        </div>
+        
+        <div class="code-block">curl -X POST \<br>
+  https://api.q2.com/trait_store/traits/users/1314/batch \<br>
+  -H "Authorization: Bearer YOUR_TOKEN" \<br>
+  -H "Content-Type: application/json" \<br>
+  -d '{<br>
+    "partner_enrolled": true,<br>
+    "funding_status": "settled",<br>
+    "days_since_enrollment": 7<br>
+  }'</div>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">Define Audiences</h4>
+        <div class="endpoint-box">
+            <div>
+                <span class="endpoint-method">POST</span>
+                <span class="endpoint-url">/trait_store/audiences</span>
+            </div>
+            <p class="endpoint-description">
+                Create a dynamic audience segment based on trait logic. The audience automatically updates as user traits change.
+            </p>
+        </div>
+        
+        <div class="code-block">curl -X POST \<br>
+  https://api.q2.com/trait_store/audiences \<br>
+  -H "Authorization: Bearer YOUR_TOKEN" \<br>
+  -H "Content-Type: application/json" \<br>
+  -d '{<br>
+    "audience_name": "enrolled_but_not_funded",<br>
+    "audience_query": "partner_enrolled=true AND partner_funding_status=none"<br>
+  }'</div>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">Read Audience Membership</h4>
+        <div class="endpoint-box">
+            <div>
+                <span class="endpoint-method">GET</span>
+                <span class="endpoint-url">/trait_store/audiences/{audienceId}/list</span>
+            </div>
+            <p class="endpoint-description">
+                Retrieve a list of user IDs that are members of a specific audience. Useful for partners who want to render personalized UX based on audience membership.
+            </p>
+        </div>
+        
+        <h3>Trait Design Principles</h3>
+        <p>Well-designed traits are the foundation of effective personalization. Follow these principles:</p>
+        
+        <ul>
+            <li><strong>Naming Conventions:</strong> Use a consistent prefix for all partner traits (e.g., <span class="code-inline">partner_traitname</span>). Use lowercase with underscores for readability.</li>
+            <li><strong>Data Types:</strong> Choose the appropriate type—boolean, integer, or enum. Enums are required for states with multiple text values; string types are not supported.</li>
+            <li><strong>Behavioral vs Lifecycle:</strong> Distinguish between lifecycle traits (enrollment, activation) and behavioral traits (days since last login, usage count).</li>
+            <li><strong>Update Frequency:</strong> Consider how often each trait should update. Some traits update in real-time via API during user sessions. Others may be derived daily and pushed in batch at night via scheduled jobs.</li>
+            <li><strong>Avoid PII & Sensitive Data:</strong> Never include personally identifiable information or sensitive financial data. Use indicators and tiers instead of exact amounts.</li>
+        </ul>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">Supported Data Types</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td>True/false flags for binary states</td>
+                    <td><code>enrolled: true</code></td>
+                </tr>
+                <tr>
+                    <td><code>integer</code></td>
+                    <td>Numeric counts or calculated values</td>
+                    <td><code>days_since_enrollment: 7</code></td>
+                </tr>
+                <tr>
+                    <td><code>enum</code></td>
+                    <td>Predefined set of values (required for multi-value states)</td>
+                    <td><code>funding_status: "settled"</code></td>
+                </tr>
+                <tr>
+                    <td><code>datetime</code></td>
+                    <td>ISO 8601 formatted timestamps</td>
+                    <td><code>first_funding_date: "2025-11-10T14:30:00Z"</code></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>Integration Patterns</h3>
+        <p>Partners can write traits and define audiences through three integration patterns, each suited to different use cases and technical architectures.</p>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">SDK (In-Session)</h4>
+        <p>For partners with client-side integrations, use Q2's Caliper SDK to write traits during active user sessions. The SDK handles authentication, user context, and trait writes automatically.</p>
+        
+        <p><strong>Best for:</strong> Real-time state changes during user interactions (e.g., user completes onboarding step, user views feature tutorial)</p>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">Direct API (Server-to-Server)</h4>
+        <p>For partners with server-side architectures, call the trait API directly from your backend. Useful for batch updates or when user context isn't available in the client.</p>
+        
+        <p><strong>Best for:</strong> Scheduled trait derivation (e.g., nightly calculation of engagement scores, daily refresh of eligibility flags)</p>
+        
+        <div class="code-block"># Example: Batch trait update from partner backend<br>
+curl -X POST \<br>
+  https://api.q2.com/trait_store/traits/users/1314/batch \<br>
+  -H "Authorization: Bearer YOUR_TOKEN" \<br>
+  -d '{<br>
+    "days_since_last_login": 7,<br>
+    "engagement_level": "low"<br>
+  }'</div>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">Webhook (Event-Driven)</h4>
+        <p>Many critical events occur outside of logged-in user sessions—funding settlements, fraud alerts, milestone achievements, payment status changes. For these async events, partners push trait updates to Q2 via webhook-style API calls triggered by backend events.</p>
+        
+        <p><strong>Best for:</strong> Asynchronous lifecycle events (e.g., payment settled, fraud detected, account funded)</p>
+        
+        <div class="code-block"># Event: User's funding transaction settled<br>
+# Trigger: Partner's backend webhook handler<br><br>
+curl -X POST \<br>
+  https://api.q2.com/trait_store/traits/users/1314/batch \<br>
+  -H "Authorization: Bearer YOUR_TOKEN" \<br>
+  -d '{<br>
+    "funding_status": "settled",<br>
+    "first_funding_date": "2025-11-10T14:30:00Z"<br>
+  }'</div>
+        
+        <p><strong>Result:</strong> Audiences refresh automatically when traits update. If an FI has an active campaign targeting "funded users," the user immediately enters that audience and receives the appropriate experience.</p>
+        
+        <h4 style="font-size: 16px; font-weight: 600; color: #8B7AB8; margin: 25px 0 15px 0;">User Identity Resolution</h4>
+        <p>All trait write operations require a Q2 User ID to identify the user in the platform. Q2 will work with each partner to establish the appropriate identity mapping strategy during integration planning:</p>
+        
+        <ul>
+            <li><strong>Direct Access:</strong> If partners have access to Q2 User IDs (e.g., passed during SSO, available in SDK context, or stored in partner database), use them directly in API calls.</li>
+            <li><strong>Email-Based Mapping:</strong> Partners provide email addresses; Q2 maintains a lookup table to resolve email to User IDs. This approach is used successfully by partners like Larky.</li>
+            <li><strong>Custom Identifier Mapping:</strong> For partners with alternative unique identifiers, Q2 can establish a mapping service to translate partner IDs to Q2 User IDs.</li>
+        </ul>
+        
+        <p>The specific approach will be determined collaboratively based on your architecture, available user context, and data governance requirements.</p>
+        
+        <h3>Authentication & Security</h3>
+        <p>All API requests require authentication via JWT bearer tokens. Q2 provides two integration paths:</p>
+        
+        <ul>
+            <li><strong>SDK (Recommended):</strong> For partners with client-side integrations, use Q2's Caliper SDK. The SDK handles authentication, token refresh, and trait writes automatically.</li>
+            <li><strong>Direct API:</strong> For server-to-server integrations or webhook-driven updates, call the trait API directly. You'll manage token acquisition and refresh via the <span class="code-inline">/authenticate</span> endpoint.</li>
+        </ul>
+        
+        <div class="callout">
+            <p><strong>For complete API documentation, code examples, and SDK integration guides, contact Q2 partnerships team at partnerships@q2.com</strong></p>
+        </div>
+    </div>
+</body>
+</html>
