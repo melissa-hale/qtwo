@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavvyMoney + Q2: Personalization Use Cases</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .document {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Cover */
+        .cover {
+            text-align: center;
+            padding: 80px 0 100px 0;
+            border-bottom: 3px solid #8B7AB8;
+            margin-bottom: 60px;
+        }
+        
+        .cover h1 {
+            font-size: 42px;
+            font-weight: 300;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 50%, #00A896 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .cover .subtitle {
+            font-size: 20px;
+            color: #4A90C8;
+            font-weight: 400;
+        }
+        
+        /* Section Headers */
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin: 60px 0 25px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E8EAED;
+            page-break-after: avoid;
+        }
+        
+        h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4A90C8;
+            margin: 35px 0 15px 0;
+        }
+        
+        /* Body Text */
+        p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 18px;
+        }
+        
+        p strong {
+            color: #8B7AB8;
+            font-weight: 600;
+        }
+        
+        /* Lists */
+        ul {
+            margin: 20px 0 20px 25px;
+        }
+        
+        ul li {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        /* Callout Boxes */
+        .callout {
+            background: linear-gradient(135deg, rgba(139, 122, 184, 0.08) 0%, rgba(74, 144, 200, 0.08) 50%, rgba(0, 168, 150, 0.08) 100%);
+            border-left: 4px solid #8B7AB8;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        .callout p {
+            margin: 0;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        .callout strong {
+            color: #8B7AB8;
+        }
+        
+        /* Use Case Cards */
+        .use-case {
+            background: #F8F9FA;
+            border: 2px solid #E8EAED;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            page-break-inside: avoid;
+        }
+        
+        .use-case-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #8B7AB8 0%, #4A90C8 100%);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .use-case-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #8B7AB8;
+            margin-bottom: 12px;
+        }
+        
+        .use-case-subtitle {
+            font-size: 14px;
+            color: #999;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .use-case-section {
+            margin: 20px 0;
+        }
+        
+        .use-case-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4A90C8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        
+        .use-case p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        
+        .use-case ul {
+            margin: 10px 0 10px 20px;
+        }
+        
+        .use-case li {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        /* Trait Examples */
+        .trait-example {
+            background: #2D3748;
+            color: #00A896;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 12px 0;
+        }
+        
+        /* Value Prop Box */
+        .value-prop {
+            background: linear-gradient(135deg, rgba(139, 122, 184, 0.05) 0%, rgba(74, 144, 200, 0.05) 100%);
+            border: 2px solid #4A90C8;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .value-prop-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #4A90C8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        
+        .value-prop p {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+        }
+        
+        /* Page Break for Printing */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .document {
+                max-width: 100%;
+                padding: 40px;
+            }
+            
+            h2 {
+                page-break-after: avoid;
+            }
+            
+            .use-case {
+                page-break-inside: avoid;
+            }
+            
+            .cover h1 {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .document {
+                padding: 40px 20px;
+            }
+            
+            .cover h1 {
+                font-size: 32px;
+            }
+            
+            .cover .subtitle {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+        <!-- Cover -->
+        <div class="cover">
+            <h1>SavvyMoney + Q2</h1>
+            <p class="subtitle">Personalization Use Cases</p>
+        </div>
+        
+        <!-- Overview -->
+        <h2>Overview</h2>
+        <p>SavvyMoney helps users monitor and improve their credit health—a powerful foundation for financial wellness. By integrating SavvyMoney's credit intelligence with Q2's Personalization Data Layer, we transform passive credit monitoring into an active engagement engine that drives measurable outcomes for FIs.</p>
+        
+        <p>When SavvyMoney shares credit lifecycle and behavioral signals with Q2, FIs gain the ability to deliver timely, contextual experiences across digital banking channels. These personalized touchpoints, delivered through Q2 SMART, Q2 Discover, Larky, or external marketing tools, turn credit insights into action, driving product adoption, deepening relationships, and improving financial outcomes.</p>
+        
+        <div class="callout">
+            <p><strong>The opportunity:</strong> Credit data is one of the strongest signals of user intent and readiness. By sharing this intelligence, SavvyMoney becomes the trigger for personalized journeys across the entire banking experience—not just a standalone utility.</p>
+        </div>
+
+        
+        <!-- Value Prop -->
+        <h2>Value Proposition</h2>
+        
+        <p><strong>For FIs:</strong> Credit intelligence becomes actionable across every customer touchpoint—not isolated in a standalone tool. This drives measurable business outcomes: product cross-sell, improved engagement, and deeper relationships.</p>
+        
+        <p><strong>For SavvyMoney:</strong> Deeper integration creates stickier customer relationships, proves marketing ROI, and differentiates against competitors who only offer static credit scores. When SavvyMoney powers the entire personalization engine, it becomes indispensable.</p>
+        
+        <p><strong>For end users:</strong> Banking experiences feel smarter and more responsive. Milestones are celebrated, opportunities are surfaced at the right time, and financial guidance is contextual—not generic.</p>
+        
+        <!-- Use Case 1 -->
+        <h2>Use Case 1: Post-Enrollment Initialization</h2>
+        
+        <div class="use-case">
+            <div class="use-case-number">1</div>
+            <div class="use-case-title">Welcome & Baseline Profiling</div>
+            <div class="use-case-subtitle">Capture credit health at enrollment to enable immediate personalization</div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">The Scenario</div>
+                <p>A user clicks a Q2 SMART banner promoting SavvyMoney, enrolls in the credit monitoring tool, and sees their score for the first time. At this moment, SavvyMoney writes baseline traits to Q2's trait store, creating an instant profile that FIs can act on.</p>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">SavvyMoney Writes Traits</div>
+                <div class="trait-example">savvy_user_enrolled=true<br>savvy_credit_score_range=good<br>savvy_goals_set=false<br>savvy_first_view_date=2025-11-12</div>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">FI Actions Enabled</div>
+                <ul>
+                    <li><strong>Q2 Discover welcome guide:</strong> "You're in! Here's how to get the most from your credit score."</li>
+                    <li><strong>Email nurture series:</strong> Educate on credit factors, introduce simulator and goals features</li>
+                    <li><strong>Audience building:</strong> Create segments like "New SavvyMoney Users" or "Excellent Credit Prospects" for targeted campaigns</li>
+                </ul>
+            </div>
+            
+            <div class="value-prop">
+                <div class="value-prop-title">Value Delivered</div>
+                <p>FIs can immediately engage new credit score users with relevant education and product offers based on their credit tier—turning enrollment into the first step of a personalized journey.</p>
+            </div>
+        </div>
+        
+        <!-- Use Case 2 -->
+        <h2>Use Case 2: Credit Score Milestone Celebrations</h2>
+        
+        <div class="use-case">
+            <div class="use-case-number">2</div>
+            <div class="use-case-title">Score Improvements & Re-qualification Moments</div>
+            <div class="use-case-subtitle">Celebrate wins and promote newly-available products when credit improves</div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">The Scenario</div>
+                <p>A user's credit score crosses a meaningful threshold—moving from "Fair" (650) to "Good" (700), or hitting 750+. This milestone unlocks better rates and product eligibility. SavvyMoney detects the change and notifies Q2.</p>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">SavvyMoney Updates Traits</div>
+                <div class="trait-example">savvy_credit_score_range=good<br>savvy_score_improved=true<br>savvy_score_change_points=+52<br>savvy_milestone_achieved=700_club</div>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">FI Campaign Response</div>
+                <ul>
+                    <li><strong>Larky push notification:</strong> "🎉 Your credit score improved! See what you now qualify for."</li>
+                    <li><strong>Q2 SMART banner:</strong> Congratulatory message with deep link to personalized offers</li>
+                    <li><strong>Email campaign:</strong> "Great news—you may now qualify for our premium credit card with 0% APR"</li>
+                    <li><strong>Banker outreach:</strong> Trigger CRM notification for relationship manager to reach out about mortgage pre-approval</li>
+                </ul>
+            </div>
+            
+            <div class="value-prop">
+                <div class="value-prop-title">Value Delivered</div>
+                <p>Transform a passive monitoring experience into celebration moments that drive product cross-sell. Users feel recognized for their progress, and FIs reach them at peak engagement with newly-relevant offers.</p>
+            </div>
+        </div>
+        
+        <!-- Use Case 3 -->
+        <h2>Use Case 3: Credit Goal Achievement & Intent Signals</h2>
+        
+        <div class="use-case">
+            <div class="use-case-number">3</div>
+            <div class="use-case-title">Goal-Based Lead Generation</div>
+            <div class="use-case-subtitle">Turn explicit credit goals into qualified product opportunities</div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">The Scenario</div>
+                <p>Users set credit goals in SavvyMoney—"Reach 720 to buy a home," "Improve score to refinance auto loan," or "Qualify for travel rewards card." These goals are explicit intent signals that FIs can act on as users progress toward achievement.</p>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">SavvyMoney Shares Goal Data</div>
+                <div class="trait-example">savvy_goal_type=home_purchase<br>savvy_goal_target_score=720<br>savvy_goal_status=approaching<br>savvy_points_to_goal=15</div>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">FI Proactive Outreach</div>
+                <ul>
+                    <li><strong>30-60 days before goal:</strong> "You're almost there! Let's talk about your mortgage options."</li>
+                    <li><strong>Q2 Discover educational content:</strong> "Preparing for Your First Home Purchase" guide series</li>
+                    <li><strong>Mortgage pre-qualification campaign:</strong> Invite users who are 10-20 points from goal to start application</li>
+                    <li><strong>Personal banker calendar invite:</strong> Schedule consultation when user hits target score</li>
+                </ul>
+            </div>
+            
+            <div class="value-prop">
+                <div class="value-prop-title">Value Delivered</div>
+                <p>Goal data transforms SavvyMoney into a qualified lead engine. FIs aren't cold-calling—they're reaching customers who've explicitly stated their intent and are ready for the next step. This dramatically improves conversion rates and customer satisfaction.</p>
+            </div>
+        </div>
+        
+        <!-- Use Case 4 -->
+        <h2>Use Case 4: Real-time Credit Event Response</h2>
+        
+        <div class="use-case">
+            <div class="use-case-number">4</div>
+            <div class="use-case-title">Credit Monitoring Alerts & Protective Actions</div>
+            <div class="use-case-subtitle">Respond instantly to credit changes with education, security, or support</div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">The Scenario</div>
+                <p>SavvyMoney detects significant credit events—new inquiries, accounts opened, or unexpected score drops. Rather than just displaying an alert in the SavvyMoney interface, these signals trigger coordinated responses across the digital banking experience.</p>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">SavvyMoney Real-time Signals</div>
+                <div class="trait-example">savvy_credit_inquiry_detected=true<br>savvy_new_tradeline=credit_card<br>savvy_score_alert=negative_change<br>savvy_score_drop_amount=-35</div>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">FI Response Pathways</div>
+                <ul>
+                    <li><strong>Security verification:</strong> In-app modal: "We noticed credit activity. Was this you?"</li>
+                    <li><strong>Educational response:</strong> Q2 Discover guide explaining why score changed and what to do next</li>
+                    <li><strong>Support offer:</strong> For significant drops, present credit counseling resources or debt consolidation options</li>
+                    <li><strong>Celebration:</strong> For positive events (e.g., paid off loan), congratulate and suggest next financial goal</li>
+                </ul>
+            </div>
+            
+            <div class="value-prop">
+                <div class="value-prop-title">Value Delivered</div>
+                <p>Position the FI as a proactive financial partner that responds in real-time to credit changes. This builds trust, prevents confusion, and creates differentiation beyond basic credit score display.</p>
+            </div>
+        </div>
+        
+        <!-- Use Case 5 -->
+        <h2>Use Case 5: Offer Engagement & Closed-Loop Marketing</h2>
+        
+        <div class="use-case">
+            <div class="use-case-number">5</div>
+            <div class="use-case-title">Bi-directional Offer Attribution</div>
+            <div class="use-case-subtitle">Measure what works and follow up on engagement</div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">The Scenario</div>
+                <p>FIs display pre-qualified offers in SavvyMoney based on credit score and goals. When users engage with these offers—clicking, applying, or saving for later—SavvyMoney shares that engagement data with Q2, enabling follow-up and attribution.</p>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">The Bi-Directional Flow</div>
+                <p><strong>Q2 → SavvyMoney:</strong> FI builds audience in Q2 SMART ("Auto loan prospects, 680+ scores") → syncs to SavvyMoney to display targeted offers</p>
+                <p><strong>SavvyMoney → Q2:</strong> User clicks offer → writes engagement trait</p>
+                <div class="trait-example">savvy_offer_clicked=auto_loan_5.99<br>savvy_offer_saved=true<br>savvy_application_started=true<br>savvy_application_completed=false</div>
+            </div>
+            
+            <div class="use-case-section">
+                <div class="use-case-section-title">FI Follow-up Actions</div>
+                <ul>
+                    <li><strong>Abandoned application nurture:</strong> Email: "Finish your auto loan application—still interested?"</li>
+                    <li><strong>Banker notification:</strong> Alert relationship manager about high-intent users</li>
+                    <li><strong>Attribution reporting:</strong> Measure conversion: "Which credit score segments actually opened products?"</li>
+                    <li><strong>Campaign optimization:</strong> Refine targeting based on what converts, not just what clicks</li>
+                </ul>
+            </div>
+            
+            <div class="value-prop">
+                <div class="value-prop-title">Value Delivered</div>
+                <p>Close the marketing loop. FIs can finally measure which SavvyMoney audiences drive revenue, optimize campaigns based on actual conversions, and recover abandoned applications—proving ROI and justifying continued investment in credit monitoring.</p>
+            </div>
+        </div>
+        
+        <!-- Implementation -->
+        <h2>How It Works</h2>
+        
+        <p>The technical implementation mirrors the proven pattern Q2 has established with partners like AtomicVest, MX, and Larky:</p>
+        
+        <div class="use-case-section">
+            <div class="use-case-section-title">1. Define Trait Schema</div>
+            <p>Q2 and SavvyMoney collaborate to identify 8-12 high-value traits that drive personalization outcomes. We start simple—enrollment status, score range, goals—then expand based on FI demand.</p>
+        </div>
+        
+        <div class="use-case-section">
+            <div class="use-case-section-title">2. Integration Approach</div>
+            <ul>
+                <li><strong>In-session updates:</strong> Via Q2 Caliper SDK when user is logged in</li>
+                <li><strong>Async events:</strong> Direct API calls or webhooks for events outside sessions (score updates, alerts)</li>
+                <li><strong>Batch updates:</strong> Nightly jobs for derived metrics (engagement trends, goal progress)</li>
+            </ul>
+        </div>
+        
+        <div class="use-case-section">
+            <div class="use-case-section-title">3. Pilot & Scale</div>
+            <p>Launch with 1-2 FIs to validate data flow and campaign effectiveness. Measure outcomes (engagement lift, conversion rates) before broad rollout. Iterate on trait definitions based on real-world usage.</p>
+        </div>
+        
+        <div class="callout">
+            <p><strong>Ready to go?</strong> Let's discuss which use cases resonate most with your product roadmap and your FI customers' needs. Q2 will partner with you through trait definition, technical integration, and pilot execution.</p>
+        </div>
+    </div>
+</body>
+</html>
