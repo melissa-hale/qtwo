@@ -4,8 +4,7 @@ FROM nginx:alpine
 # Copy your HTML file(s) to nginx's default serving directory
 COPY . /usr/share/nginx/html
 
-# Expose port 80
-EXPOSE 80
+# Copy custom nginx config
+COPY default.conf /etc/nginx/conf.d/default.conf
 
-# nginx alpine image already has a CMD to start nginx
-# No additional CMD needed
+EXPOSE 8080
