@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyNaturoWellness - Naturopathic Medicine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2D5F4F;
+            --soft-sage: #8BA888;
+            --warm-cream: #F9F7F4;
+            --deep-teal: #1A3D32;
+            --light-mint: #E8F3EF;
+            --accent-gold: #C9A961;
+            --text-dark: #2C2C2C;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--warm-cream);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-green), var(--soft-sage));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--deep-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(45,95,79,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-mint) 0%, var(--warm-cream) 100%);
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="%238BA888" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--deep-teal);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .symptoms-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .symptom-tag {
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            color: var(--primary-green);
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--soft-sage), var(--primary-green));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--deep-teal);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-card {
+            background: var(--light-mint);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(45,95,79,0.15);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-card h3 {
+            color: var(--deep-teal);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .process-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--warm-cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--soft-sage);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary-green), var(--soft-sage));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--deep-teal);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--deep-teal), var(--primary-green));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-teal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">MyNaturoWellness</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="btn-primary">Book Consultation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Unlock Your Body's Natural Healing Potential</h1>
+                <p class="hero-subtitle">Personalized naturopathic care to help you overcome chronic health challenges and thrive.</p>
+                
+                <div class="symptoms-list">
+                    <span class="symptom-tag">Fatigue</span>
+                    <span class="symptom-tag">Digestive Issues</span>
+                    <span class="symptom-tag">Brain Fog</span>
+                    <span class="symptom-tag">Anxiety</span>
+                    <span class="symptom-tag">Sleep Problems</span>
+                    <span class="symptom-tag">Weight Management</span>
+                </div>
+
+                <a href="#" class="btn-primary" style="display: inline-block; margin-top: 1rem;">Start Your Journey</a>
+            </div>
+            <div class="hero-image">
+                [Professional wellness imagery would appear here]
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="services">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Your Path to Wellness</h2>
+                <p>A comprehensive, science-backed approach to identify root causes and restore your health</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="step-number">1</div>
+                    <h3>Initial Consultation</h3>
+                    <p>90-minute comprehensive health assessment to understand your unique health history and current challenges.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="step-number">2</div>
+                    <h3>Advanced Lab Testing</h3>
+                    <p>Comprehensive testing including microbiome, hormones, toxins, and micronutrients to identify imbalances.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="step-number">3</div>
+                    <h3>Personalized Protocol</h3>
+                    <p>Customized 6-12 month cellular transformation program with targeted supplementation and detoxification.</p>
+                </div>
+
+                <div class="process-card">
+                    <div class="step-number">4</div>
+                    <h3>Re-evaluation</h3>
+                    <p>Follow-up testing and protocol refinement to ensure sustained results and optimal wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Client Success Stories</h2>
+                <p>Real results from people who transformed their health</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">I have been taking my daughter to all kinds of doctors for years and after just one week of treatment with Dr. Michelle her eczema has almost completely cleared. My daughter is so much happier because she is not itching all the time.</p>
+                    <p class="testimonial-author">— Wendy Sanchez</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">I feel so much better. My stomach isn't bloated and I am losing weight without even exercising. My foggy brain is gone and my skin is looking wonderful. Working with Dr. Michelle has changed things around for me big time.</p>
+                    <p class="testimonial-author">— Jennifer Villanueva</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">Honestly, my body is in the best shape of my life since working with Dr. Michelle on my diet and taking her suggestions on ways to improve my health. Both mind and body are peak!</p>
+                    <p class="testimonial-author">— Shebani Abandour</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Meet Dr. Michelle Trias</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-image">
+                    [Dr. Michelle Trias professional photo]
+                </div>
+                <div class="about-content">
+                    <h3>Motherhood Led to Naturopathy</h3>
+                    <p>Dr. Michelle Trias is a dedicated naturopathic consultant on a mission to help you unlock your metabolic potential, heal your gut, and take control of your health and wellness.</p>
+                    <p>With expertise in personalized nutrition and targeted detoxification, Dr. Trias uses advanced lab testing and evidence-based protocols to address the root causes of chronic health issues.</p>
+                    <p>Whether you're struggling with exhaustion, weight that won't budge, sugar cravings, or feeling like your body is working against you, Dr. Trias provides the personalized care and support you need to feel like yourself again.</p>
+                    <a href="#" class="btn-primary" style="display: inline-block; margin-top: 1rem;">Learn More About Dr. Trias</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <h2>Ready to Transform Your Health?</h2>
+            <p>Book your initial consultation and take the first step toward lasting wellness</p>
+            <a href="#" class="btn-secondary">Schedule Your Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>MyNaturoWellness</h4>
+                <p>Personalized naturopathic care for lasting health and wellness</p>
+                <p style="margin-top: 1.5rem;">
+                    <strong>Office Hours:</strong><br>
+                    Monday - Saturday<br>
+                    8:30 AM - 5:00 PM
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#">Naturopathy Services</a>
+                <a href="#">Lab Testing</a>
+                <a href="#">Detox Programs</a>
+                <a href="#">30 Day Gut Reset</a>
+                <a href="#">Total Body Detox</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <a href="#">Blog</a>
+                <a href="#">Videos</a>
+                <a href="#">Events</a>
+                <a href="#">FAQ</a>
+                <a href="#">Endocrine Disrupters Guide</a>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>24850 Burnt Pine Dr #3<br>Bonita Springs, FL 34134</p>
+                <p><strong>Phone:</strong> 239-579-3846</p>
+                <a href="#">Book Appointment</a>
+                <a href="#">Order Lab Testing</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 MyNaturoWellness. All rights reserved. | <a href="#" style="display: inline;">Privacy Policy</a> | <a href="#" style="display: inline;">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
