@@ -1,0 +1,43 @@
+{
+  "personas": [
+    {
+      "category": "FI Marketers",
+      "icon": "👥",
+      "color": "#6B46C1",
+      "types": [
+        {
+          "name": "External Tool Users",
+          "pain": "Must login to separate tool (SMART) to leverage digital banking channel, creating friction and context-switching",
+          "solution": "MarTech connectors allow pushing segments and campaigns into digital banking from existing tools (HubSpot, Salesforce)"
+        },
+        {
+          "name": "Multi-Hat Employees",
+          "pain": "Responsible for digital banking success but lack time/resources for strategic campaign planning",
+          "solution": "Partner-contributed insights surface high-value campaign opportunities with simplified execution paths"
+        }
+      ]
+    },
+    {
+      "category": "Q2 Partners",
+      "icon": "🤝",
+      "color": "#2C5282",
+      "types": [
+        {
+          "name": "Multi-Step Onboarding Partners",
+          "pain": "Identifying incomplete onboarding states happens after-the-fact; some FIs don't allow partner-run campaigns",
+          "solution": "Real-time onboarding state tracking through trait contribution, enabling FI-orchestrated journey nudges"
+        },
+        {
+          "name": "Audience/Segment Owners",
+          "pain": "Sophisticated segments exist in partner apps but can't be targeted in digital banking",
+          "solution": "Partner-defined segments made available in digital banking through audience sync capabilities"
+        },
+        {
+          "name": "Insight Providers",
+          "pain": "Valuable behavioral insights trapped in partner apps, unavailable to FI marketing tools",
+          "solution": "Trait contribution flows insights to SMART, then syncs to FI external tools via connectors"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "milestones": [
+    {
+      "id": "open-data-layer",
+      "name": "Open the Data Layer",
+      "description": "Making SMART's intelligence accessible to partners and FIs",
+      "timeline": "Q1-Q3 2026",
+      "color": "#6B46C1",
+      "quarters": [
+        {
+          "quarter": "Q1 2026",
+          "period": "Jan-Mar",
+          "focus": "Foundation",
+          "why": "Partners need APIs to access and contribute trait data. Quality audit ensures reliability before opening the platform.",
+          "shipping": [
+            "Set Traits API v1 - Partners can set user traits via API",
+            "Trait Quality Audit - Audit all 450 existing traits, categorize issues",
+            "Model-Based Trait Documentation - Whitepapers explaining data derivation"
+          ],
+          "partners": ["Eko", "AtomicVest"],
+          "dependencies": ["Adapters team: Upstream data quality fixes"],
+          "outcomes": [
+            "2 partners actively contributing traits",
+            "Trait quality audit complete with remediation roadmap"
+          ]
+        },
+        {
+          "quarter": "Q2 2026",
+          "period": "Apr-Jun",
+          "focus": "Expansion",
+          "why": "Decision point on next API based on partner feedback. Metadata model enables clear partner attribution in UI.",
+          "shipping": [
+            "Set Audiences API OR Get Traits API - Based on March decision and team capacity",
+            "Trait Metadata Model - Namespace/source fields for partner attribution"
+          ],
+          "partners": ["3-5 partners total", "Eko/AtomicVest in production"],
+          "dependencies": ["Design team: UI/UX for partner trait visualization"],
+          "outcomes": [
+            "3-5 partners contributing traits",
+            "2-3 FIs with measurable campaign outcomes using partner data"
+          ]
+        },
+        {
+          "quarter": "Q3 2026",
+          "period": "Jul-Sep",
+          "focus": "Observability",
+          "why": "Real-time monitoring ensures platform reliability at scale. Essential for partner trust and FI confidence.",
+          "shipping": [
+            "Trait Observability/Monitoring - Real-time computation monitoring, quality metrics, alerting"
+          ],
+          "partners": ["5+ partners total"],
+          "dependencies": [],
+          "outcomes": [
+            "Trait quality metrics tracked in real-time",
+            "Partner trait contribution visibility"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "native-experiences",
+      "name": "Enable Native Experiences",
+      "description": "Partners building rich, integrated experiences in digital banking",
+      "timeline": "Q1-Q3 2026",
+      "color": "#2C5282",
+      "quarters": [
+        {
+          "quarter": "Q1 2026",
+          "period": "Jan-Mar",
+          "focus": "Dev Environment",
+          "why": "Partners need safe testing environment before production integrations. Foundation for all SDK work.",
+          "shipping": [
+            "Partner Dev Environment - SDK dev environment for testing against dev API endpoints"
+          ],
+          "partners": ["Eko", "AtomicVest testing integrations"],
+          "dependencies": ["SDK team: Dev environment infrastructure"],
+          "outcomes": [
+            "Partner dev environment available for testing",
+            "SDK enhancement requirements collected from partners"
+          ]
+        },
+        {
+          "quarter": "Q2 2026",
+          "period": "Apr-Jun",
+          "focus": "SDK Flexibility",
+          "why": "Current SDK too restrictive for partner needs (Account Tiles limited to HADEs). Flexible layouts unlock richer experiences.",
+          "shipping": [
+            "SDK Enhancements - Flexible layout configurations beyond HADEs",
+            "FDIC Disclaimer Support - Legal requirement for financial product tiles",
+            "New Component Types - Beyond Account Tiles for diverse use cases"
+          ],
+          "partners": ["Eko/AtomicVest building enhanced native experiences"],
+          "dependencies": [
+            "SDK team: Component library enhancements",
+            "Digital banking platform team: New UI pattern support"
+          ],
+          "outcomes": [
+            "Partners can build flexible Account Tile layouts",
+            "FDIC disclaimers and custom CTAs supported"
+          ]
+        },
+        {
+          "quarter": "Q3 2026",
+          "period": "Jul-Sep",
+          "focus": "UI Polish",
+          "why": "Partner traits and audiences need clear visibility in SMART UI. Low-hanging fruit improvements support new data sources.",
+          "shipping": [
+            "Partner Trait Attribution - Show source/namespace in UI",
+            "Filtering by Source - Group and filter traits by data source",
+            "Partner Audience Visibility - Display partner-contributed audiences"
+          ],
+          "partners": ["All integrated partners benefit from better UI"],
+          "dependencies": ["Design team: UI/UX implementation"],
+          "outcomes": [
+            "Clear distinction between Q2 and partner traits",
+            "FIs can easily discover and use partner data"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "external-tools",
+      "name": "Connect External Tools",
+      "description": "FIs using their existing martech stack with digital banking",
+      "timeline": "Q1-Q3 2026",
+      "color": "#38B2AC",
+      "quarters": [
+        {
+          "quarter": "Q1 2026",
+          "period": "Jan-Mar",
+          "focus": "Requirements",
+          "why": "Need to validate connector choice with FIs and understand integration patterns before building.",
+          "shipping": [],
+          "partners": [],
+          "dependencies": ["Partnership team: FI conversations about martech usage"],
+          "outcomes": [
+            "MarTech connector requirements gathered from FI conversations",
+            "HubSpot validated as first connector choice"
+          ]
+        },
+        {
+          "quarter": "Q2 2026",
+          "period": "Apr-Jun",
+          "focus": "Design Partner",
+          "why": "Co-create with FI to ensure connector meets real needs. Finalize requirements before Q3 build.",
+          "shipping": [],
+          "partners": [],
+          "dependencies": ["Customer success: Identify and engage design partner FI"],
+          "outcomes": [
+            "Design partner FI committed to HubSpot connector pilot",
+            "Detailed requirements finalized"
+          ]
+        },
+        {
+          "quarter": "Q3 2026",
+          "period": "Jul-Sep",
+          "focus": "HubSpot Connector",
+          "why": "15% of FIs don't use SMART due to existing tools. Connector removes this barrier and expands addressable market.",
+          "shipping": [
+            "HubSpot Connector v1 - Bidirectional sync (segments to SMART, traits to HubSpot)",
+            "Pilot with 1 FI"
+          ],
+          "partners": [],
+          "dependencies": ["Customer success: FI onboarding and training"],
+          "outcomes": [
+            "1 FI using connector in production",
+            "Segment sync working bidirectionally",
+            "Validation for future connector roadmap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "developer-experience",
+      "name": "Developer Experience",
+      "description": "Making integration effortless for partners and FIs",
+      "timeline": "Q1-Q3 2026",
+      "color": "#ED8936",
+      "quarters": [
+        {
+          "quarter": "Q1 2026",
+          "period": "Jan-Mar",
+          "focus": "Initial DevX",
+          "why": "Partners need basic docs and testing capability immediately. Foundation for all enablement work.",
+          "shipping": [
+            "Partner Dev Environment - Testing against dev API endpoints",
+            "Initial API Documentation - Getting started guides"
+          ],
+          "partners": ["Eko", "AtomicVest"],
+          "dependencies": ["SDK team: Dev environment infrastructure"],
+          "outcomes": [
+            "Partners can test integrations safely",
+            "Basic documentation available"
+          ]
+        },
+        {
+          "quarter": "Q2 2026",
+          "period": "Apr-Jun",
+          "focus": "PTE Testing",
+          "why": "FIs need to test SMART in their permanent test environments. Critical for enterprise adoption.",
+          "shipping": [
+            "PTE Testing Capability - Initial implementation (research in Q1 informs approach)"
+          ],
+          "partners": [],
+          "dependencies": ["Digital banking platform team: PTE infrastructure"],
+          "outcomes": [
+            "FIs can test SMART in PTE",
+            "Clear path for production rollout"
+          ]
+        },
+        {
+          "quarter": "Q3 2026",
+          "period": "Jul-Sep",
+          "focus": "Developer Portal",
+          "why": "Support burden increases with partner growth. Self-serve portal scales enablement and reduces friction.",
+          "shipping": [
+            "Partner Developer Portal v1 - Comprehensive guides, tutorials, API docs, code examples"
+          ],
+          "partners": ["All current and future partners"],
+          "dependencies": ["Design team: Portal design (if needed)"],
+          "outcomes": [
+            "Partners can onboard with minimal support",
+            "Support ticket volume decreases",
+            "Time-to-integrate reduces to <30 days"
+          ]
+        }
+      ]
+    }
+  ]
+}
